@@ -1,11 +1,11 @@
-def main():
+def main(): #Menu that the user can navigate through and decide what they would like to use the gradebook for.
     print("Welcome to the Gradebook! This can either ruin your day or make it better, depending on how smart you are!")
     print("The Gradebook says that you are taking Data Science, Physics, and Calculus.")
     print("Here's a list of what you can use the Gradebook for.")
     playing = True
     while playing == True:
         print("A. Print out each class and its average grade!")
-        print("B. Print our all the grades for a specific class of your choice!")
+        print("B. Print out all the grades for a specific class of your choice!")
         print("C. Print out the total, accumulative GPA across all of your classes!")
         print("D. See what your GPA is in letter form! (A, B, C, D, etc.)")
         print("E. Leave the Gradebook IMMEDIATELY")
@@ -40,18 +40,18 @@ def main():
         else:
             print("That is NOT even an option girl... choose an uppercase letter A, B, C, D, or E!")
 
-gradebook = {
+gradebook = { #Defines the name of the subjects and their corresponding grades
     "Data Science": [100, 99, 98],
     "Physics": [95, 89, 94],
     "Calculus": [97, 90, 92]
 }
 
-def add_grade(sub, grade):
+def add_grade(sub, grade): #Allows for a grade to be added to its corresponding subject within the dictionary
     if sub not in gradebook:
         gradebook[sub] = []
     gradebook[sub].append(grade)
 
-def print_average(sub):
+def print_average(sub): #Prints the average of one, specific subject
     if sub in gradebook:
         allgrades = gradebook[sub]
         average = sum(allgrades) / len(allgrades)
@@ -59,7 +59,7 @@ def print_average(sub):
     else:
         print("You're not taking that subject!! So silly! Do better.")
 
-def print_grades(sub):
+def print_grades(sub): #Prints all the individual grades in one, specific subject
     if sub in gradebook:
         print("Your grades in", sub, "are:")
         for grade in gradebook[sub]:
@@ -67,7 +67,7 @@ def print_grades(sub):
     else:
         print("You're not taking that subject!! Such a silly goose! Do better.")
 
-def print_all_averages():
+def print_all_averages(): #Prints all subjects and corresponding averages, then indicates users best and worst subjects
     bestsubname = ""
     worstsubname = ""
     bestavg = -100
@@ -85,7 +85,7 @@ def print_all_averages():
     print("Your BEST subject is ", bestsubname)
     print("Your WORST subject is ", worstsubname, "... better work on that!")
 
-def get_GPA():
+def get_GPA(): #Returns the users GPA across all subjects on a 4.0 scale
     totalgpa = 0
     for sub in gradebook:
         grades = gradebook[sub]
