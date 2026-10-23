@@ -1,0 +1,30 @@
+1. What is the general purpose of your program? (1-2):
+    The general purpose of this program is to create one specific space where a user can easily access and calculate useful
+    information about their grades. 
+
+2. Who are 2 possible expected users of your program? How does your program target them?:
+    One possible expected user of my program is a student that is applying for college. My program targets them
+    because there are features that allow for the student to easily calculate their GPA, which is a necessary
+    aspect of the college application process.
+    Another possible expected user of my program is a parent that wants to keep track of their childs grades. While
+    my program refers to the user as the person actually getting the grades, this program would allow for a parent
+    to work with their kids to identify classes that are troubling through easily accessing the individual grades
+    of each class and also identifying the student's worst subject.
+
+3. Consider all features of your program. Name one non-negotiable of your project and one feature that is 
+nice-to-have. Why do you feel this is the case?:
+    One non-negotiable feature is the ability to calculate the average grade for each subject. This is important 
+    because the main purpose of the Gradebook is to help users understand how they are performing academically. 
+    
+    One nice-to-have feature is converting the overall GPA into a letter grade. Although this is not necessary for
+    the Gradebook to function, it makes the results easier for users to understand.
+
+4. What are two improvements or additional features that could be included in future iterations of your project?  What
+value would they add?:
+    One improvement would be allowing users to add new grades directly through the main menu. 
+    Although I created a function that adds grades, including it in the menu would make the program more 
+    interactive and useful. 
+    Another improvement would be to have a feature that allows for students to see what grade they would need
+    on a future test in a class to get their GPA or class average to a specific grade. This would be especially
+    useful for students applying to college, as they would be able to organize/plan their studying time around
+    what would be most beneficial to their GPA or average in a class.
