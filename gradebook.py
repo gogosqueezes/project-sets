@@ -1,3 +1,45 @@
+def main():
+    print("Welcome to the Gradebook! This can either ruin your day or make it better, depending on how smart you are!")
+    print("The Gradebook says that you are taking Data Science, Physics, and Calculus.")
+    print("Here's a list of what you can use the Gradebook for.")
+    playing = True
+    while playing == True:
+        print("A. Print out each class and its average grade!")
+        print("B. Print our all the grades for a specific class of your choice!")
+        print("C. Print out the total, accumulative GPA across all of your classes!")
+        print("D. See what your GPA is in letter form! (A, B, C, D, etc.)")
+        print("E. Leave the Gradebook IMMEDIATELY")
+
+        choice = input("Which option would you like to choose? (Make sure to answer with a single, uppercase letter A-E): ")
+        if choice == "A":
+            print_all_averages()
+        elif choice == "B":
+            sub = input("Which subject would you like to see? (Data Science, Physics, or Calculus): ")
+            print_grades(sub)
+        elif choice == "C":
+            print("Your overall GPA is:", get_GPA())
+        elif choice == "D":
+            gpa = get_GPA()
+            if gpa >= 4.0:
+                letter = "A"
+            elif gpa >= 3.7:
+                letter = "A-"
+            elif gpa >= 3.0:
+                letter = "B"
+            elif gpa >= 2.0:
+                letter = "C"
+            elif gpa >= 1.0:
+                letter = "D"
+            else:
+                letter = "F"
+            print("Your GPA letter grade is:", letter)
+
+        elif choice == "E":
+            print("Byeee. Until next time!")
+            playing = False
+        else:
+            print("That is NOT even an option girl... choose an uppercase letter A, B, C, D, or E!")
+
 gradebook = {
     "Data Science": [100, 99, 98],
     "Physics": [95, 89, 94],
@@ -66,3 +108,5 @@ def get_GPA():
     
     finalgpa = totalgpa / len(gradebook)
     return finalgpa
+
+main()
