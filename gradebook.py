@@ -16,7 +16,11 @@ def main(): #Menu that the user can navigate through and decide what they would 
         if choice == "A":
             print_all_averages()
         elif choice == "B":
-            sub = input("Which subject would you like to see?:")
+            print("Your current subjects are:", list(gradebook.keys()))
+            sub = input("Which subject would you like to see?: ")
+            for subject in gradebook:
+                if sub.lower() == subject.lower():
+                sub = subject
             print_grades(sub)
         elif choice == "C":
             print("Your overall GPA is:", get_GPA())
@@ -36,11 +40,17 @@ def main(): #Menu that the user can navigate through and decide what they would 
                 letter = "F"
             print("Your GPA letter grade is:", letter)
         elif choice == "E":
-            sub = input("Which subject would you like to add a grade to?:")
+            print("Your current subjects are:", list(gradebook.keys()))
+            sub = input("Which subject would you like to add a grade to?: ")
+            for subject in gradebook:
+                if sub.lower() == subject.lower():
+                    sub = subject
             grade = float(input("What grade would you like to add? "))
             add_grade(sub, grade)
             print("Great. Your grade has been added!")
         elif choice == "F":
+            save_grades()
+            print("Okay.. I just saved your grades before you leave.")
             print("Byeee. Until next time!")
             playing = False
         else:
@@ -119,4 +129,12 @@ def get_GPA(): #Returns the users GPA across all subjects on a 4.0 scale
     finalgpa = totalgpa / len(gradebook)
     return finalgpa
 
+def save_grades(): # This method will save the updated grades and update the CSV file "grades.csv" as well
+    with open("grades.csv", "w", newline = "") as f:
+        writer = csv.writer(f)
+        for sub in gradebook:
+            row = [sub]
+            for grade in gradebook[sub]:
+                row.append(grade)
+            writer.writerow(row)                
 main()
