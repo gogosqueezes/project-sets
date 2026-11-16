@@ -1,3 +1,4 @@
+import csv
 def main(): #Menu that the user can navigate through and decide what they would like to use the gradebook for.
     print("Welcome to the Gradebook! This can either ruin your day or make it better, depending on how smart you are!")
     print("The Gradebook says that you are taking Data Science, Physics, and Calculus.")
@@ -40,11 +41,16 @@ def main(): #Menu that the user can navigate through and decide what they would 
         else:
             print("That is NOT even an option girl... choose an uppercase letter A, B, C, D, or E!")
 
-gradebook = { #Defines the name of the subjects and their corresponding grades
-    "Data Science": [100, 99, 98],
-    "Physics": [95, 89, 94],
-    "Calculus": [97, 90, 92]
-}
+gradebook = {}
+
+with open("grades.csv", "r") as f:
+    reader = csv.reader(f)
+    for row in reader:
+        sub = row[0]
+        grades = []
+        for grade in row [1: ]:
+            grades.append(float(grade))
+        gradebook[sub] = grades
 
 def add_grade(sub, grade): #Allows for a grade to be added to its corresponding subject within the dictionary
     if sub not in gradebook:
@@ -103,9 +109,7 @@ def get_GPA(): #Returns the users GPA across all subjects on a 4.0 scale
             gpa = 1.0
         else:
             gpa = 0.0
-
         totalgpa += gpa
-    
     finalgpa = totalgpa / len(gradebook)
     return finalgpa
 
