@@ -10,9 +10,11 @@ def main(): #Menu that the user can navigate through and decide what they would 
         print("C. Print out the total, accumulative GPA across all of your classes!")
         print("D. See what your GPA is in letter form! (A, B, C, D, etc.)")
         print("E. Add a new grade to a subject!")
-        print("F. Leave the Gradebook IMMEDIATELY")
+        print("F. Remove a grade from a subject!")
+        print("G. See a visual representation of your grades!")
+        print("H. Leave the Gradebook IMMEDIATELY")
 
-        choice = input("Which option would you like to choose? (A-F): ").upper()
+        choice = input("Which option would you like to choose? (A-H): ").upper()
         if choice == "A":
             print_all_averages()
         elif choice == "B":
@@ -20,7 +22,7 @@ def main(): #Menu that the user can navigate through and decide what they would 
             sub = input("Which subject would you like to see?: ")
             for subject in gradebook:
                 if sub.lower() == subject.lower():
-                sub = subject
+                    sub = subject
             print_grades(sub)
         elif choice == "C":
             print("Your overall GPA is:", get_GPA())
@@ -49,12 +51,22 @@ def main(): #Menu that the user can navigate through and decide what they would 
             add_grade(sub, grade)
             print("Great. Your grade has been added!")
         elif choice == "F":
+            print ("Your current subjects are: ", list(gradebook.keys()))
+            sub = input("Which subject would you like to remove a grade from?")
+            for subject in gradebook: 
+                if sub.lower() == subject.lower():
+                    sub = subject
+            grade = float(input("Which grade would you like to remove?: ")) 
+            remove_grade(sub, grade)
+        elif choice == "G":
+            visualize_grades()
+        elif choice == "H":
             save_grades()
             print("Okay.. I just saved your grades before you leave.")
             print("Byeee. Until next time!")
             playing = False
         else:
-            print("That is NOT even an option girl... choose A, B, C, D, E, or F!")
+            print("That is NOT even an option girl... choose A, B, C, D, E, F, G, or H!")
 
 gradebook = {}
 
@@ -73,6 +85,18 @@ def add_grade(sub, grade): #Allows for a grade to be added to its corresponding 
         gradebook[sub] = []
     gradebook[sub].append(grade)
 
+def remove_grade(sub, grade): #This method will remove a specific grade from a specific subject
+    if sub in gradebook:
+        if grade in gradebook[sub]:
+            if len(gradebook[sub]) > 1:
+                gradebook[sub].remove(grade)
+                print("That grade has been removed. Good riddance.")
+            else:
+                print("You can't remove that... I need at least one grade for that subject!")
+        else: 
+            print("That grade doesn't even exist in this subject?")
+    else:
+        print("You aren't even taking that subject..?")
 def print_average(sub): #Prints the average of one, specific subject
     if sub in gradebook:
         allgrades = gradebook[sub]
@@ -136,5 +160,17 @@ def save_grades(): # This method will save the updated grades and update the CSV
             row = [sub]
             for grade in gradebook[sub]:
                 row.append(grade)
-            writer.writerow(row)                
+            writer.writerow(row)       
+
+def visualize_grades(): # This method will display a subject averages as a visual representation
+    print("Here is a visual representation of your grades... an X represents 50% while each * represents 5%.")
+    for sub in gradebook:
+        grades = gradebook[sub]
+        average = sum(grades) / len(grades)
+        rounded = int(average / 5) * 5
+        stars = int((rounded - 50) / 5) 
+        if rounded >= 50:
+            print(sub.ljust(15) + ": X" + "*" * stars)      
+        else: 
+            print(sub.ljust(15) + ": Below 50%... so bad I can't even visually represent it.") 
 main()

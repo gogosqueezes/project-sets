@@ -1,0 +1,34 @@
+1. Identify the type of data we are working with. Identify at least 2 categories the data could fit into and why. 
+    In this project set, we are working with small data because the data contains a limited number of subjects
+    and then their corresponding grades. Another category that the data could fit into is numerical data because
+    the individual grades are numbers that are then used to calculate averages/GPAs. Another category the data could
+    fit into is categorical data because the grades are organized into different subjects.
+
+2. How do we handle our data in terms of the 5 Cs? In other words, what did we do to ____ (Collect/Cache/Clean
+/Conclude/Convey) our data?:
+    a. Collect: We collect our data by entering the subjects and their 
+    corresponding grades into a CSV file. Users can also collect new data
+    following the creation of the CSV file by adding grades
+    through the main menu.
+    b. Cache: We cache our data by storing the subjects and their corresponding
+    grades in the CSV file and then loading them into a Python dictionary. 
+    This allows the program to store and access the information from the CSV
+    file when necessary.
+    c. Clean: We clean our data from converting the grades from strings to
+    integers/numerical values as well as making any inputs about the choices
+    for the main menu/the subject inputs case-insensitive.
+    d. Conclude: We analyze our data by different methods such as the 
+    calculating the average grade for each subject, identifying which class
+    is the user's best and worst, and also calculating their overall GPA. 
+    e. Convey: We convey our results from our data through the Gradebook menu,
+    which allows users to view their grades/averages/GPA. We also have a visual
+    representation of their grades using Xs and *s. 
+
+3. What other questions can we ask about the data we've collected and analyzed?
+What is left to be desired?
+    Some other questions that we could ask is how a student's grades change 
+    over time and whether their grades are improving or getting worse in a 
+    particular subject. Another question is if a GPA would make a certain
+    college a safety/target/reach depending on the average GPAs of 
+    admitted students. One thing left to be desired is the ability to track 
+    grades over time by including the dates of each assignment. 
